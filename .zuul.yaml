@@ -54,6 +54,7 @@
       ansible_collection_name: iosxr
       proposal_project_src: ~/src/github.com/ansible-network/ansible_collections.cisco.iosxr
 
+- job:
     name: propose-network-collections-migration-junipernetworks-junos
     parent: propose-network-collections-migration-base
     required-projects:
@@ -111,6 +112,7 @@
       ansible_collection_namespace: cisco
       ansible_collection_name: iosxr
 
+- job:
     name: network-collections-migration-junipernetworks-junos
     parent: network-collections-migration-base
     required-projects:
