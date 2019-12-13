@@ -54,6 +54,15 @@
       ansible_collection_name: iosxr
       proposal_project_src: ~/src/github.com/ansible-network/ansible_collections.cisco.iosxr
 
+    name: propose-network-collections-migration-junipernetworks-junos
+    parent: propose-network-collections-migration-base
+    required-projects:
+      - name: github.com/ansible-network/ansible_collections.junipernetworks.junos
+    vars:
+      ansible_collection_namespace: junipernetworks
+      ansible_collection_name: junos
+      proposal_project_src: ~/src/github.com/ansible-network/ansible_collections.junipernetworks.junos
+
 - job:
     name: network-collections-migration-base
     parent: unittests
@@ -102,6 +111,14 @@
       ansible_collection_namespace: cisco
       ansible_collection_name: iosxr
 
+    name: network-collections-migration-junipernetworks-junos
+    parent: network-collections-migration-base
+    required-projects:
+      - name: github.com/ansible-network/ansible_collections.junipernetworks.junos
+    vars:
+      ansible_collection_namespace: junipernetworks
+      ansible_collection_name: junos
+
 - project:
     check:
       jobs:
@@ -109,21 +126,25 @@
         - network-collections-migration-arista-eos
         - network-collections-migration-cisco-ios
         - network-collections-migration-cisco-iosxr
+        - network-collections-migration-junipernetworks-junos
     gate:
       jobs:
         - network-collections-migration-ansible-netcommon
         - network-collections-migration-arista-eos
         - network-collections-migration-cisco-ios
         - network-collections-migration-cisco-iosxr
+        - network-collections-migration-junipernetworks-junos
     periodic:
       jobs:
         - propose-network-collections-migration-ansible-netcommon
         - propose-network-collections-migration-arista-eos
         - propose-network-collections-migration-cisco-ios
         - propose-network-collections-migration-cisco-iosxr
+        - propose-network-collections-migration-junipernetworks-junos
     post:
       jobs:
         - propose-network-collections-migration-ansible-netcommon
         - propose-network-collections-migration-arista-eos
         - propose-network-collections-migration-cisco-ios
         - propose-network-collections-migration-cisco-iosxr
+        - propose-network-collections-migration-junipernetworks-junos
